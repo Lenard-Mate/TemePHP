@@ -8,6 +8,22 @@
 <body>  
 
 <?php
+
+//Conection to database
+$servername = "remotemysql.com";
+$username = "o8LxL7h9xu";
+$password = "8iqIEQbEUZ";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password);
+
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+echo "Connected successfully";
+
+
 // define variables and set to empty values
 $nameErr = $emailErr = $genderErr = $websiteErr = "";
 $name = $email = $gender = $comment = $passwor = "";
@@ -85,7 +101,7 @@ echo $name;
 echo "<br>";
 echo $email;
 echo "<br>";
-echo $website;
+echo $passwor;
 ?>
 
 </body>
