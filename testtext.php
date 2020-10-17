@@ -24,6 +24,8 @@ if ($conn->connect_error) {
 echo "Connected successfully";
 
 
+
+
 // define variables and set to empty values
 $nameErr = $emailErr = $genderErr = $websiteErr = "";
 $name = $email = $gender = $comment = $passwor = "";
@@ -78,6 +80,17 @@ function test_input($data) {
   $data = htmlspecialchars($data);
   return $data;
 }
+
+
+$sql = "INSERT INTO o8LxL7h9xu.form_table (name, email, password)
+    VALUES ('$name', '$email', '$password')";
+if ($conn->query($sql) === TRUE) {
+  echo "New record created successfully";
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+
 ?>
 
 <h2>PHP Form Validation Example</h2>
