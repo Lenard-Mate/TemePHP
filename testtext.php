@@ -26,7 +26,7 @@ if ($conn->connect_error) {
 
 // define variables and set to empty values
 $nameErr = $emailErr = $genderErr = $websiteErr = "";
-$name = $email = $gender = $comment = $passwor = "";
+$name = $email = $gender = $comment = $password = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["name"])) {
@@ -49,12 +49,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   }
     
-  if (empty($_POST["passwor"])) {
-    $passwor = "";
+  if (empty($_POST["password"])) {
+    $password = "";
   } else {
-    $passwor = test_input($_POST["passwor"]);
+    $password = test_input($_POST["password"]);
     // check if URL address syntax is valid (this regular expression also allows dashes in the URL)
-    if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$passwor)) {
+    if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$password)) {
       $websiteErr = "Invalid URL";
     }
   }
@@ -92,39 +92,39 @@ if ($conn->query($sql) === TRUE) {
 $sql = "SELECT name, email, password FROM o8LxL7h9xu.form_table";
 $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "<br> Name: ". $row["name"]. " - Email: ". $row["email"]. " " . $row["password"] . "<br>";
-    }
-} else {
-    echo "0 results";
-}
 
 ?>
 
 <h2>Salvarea datelor</h2>
-<p><span class="error">* required field</span></p>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
   Name: <input type="text" name="name" value="<?php echo $name;?>">
-  <span class="error">* <?php echo $nameErr;?></span>
   <br><br>
   E-mail: <input type="text" name="email" value="<?php echo $email;?>">
-  <span class="error">* <?php echo $emailErr;?></span>
   <br><br>
-  Password: <input type="password" name="passwor" value="<?php echo $passwor;?>">
-  <span class="error"><?php echo $websiteErr;?></span>
+  Password: <input type="password" name="password" value="<?php echo $password;?>">
   <br><br>
   <input type="submit" name="submit" value="Submit">  
 </form>
 
 <?php
 echo "<h2>Your Input:</h2>";
-echo $name;
-echo "<br>";
-echo $email;
-echo "<br>";
-echo $passwor;
+echo '<table><tr>';
+
+echo '<th>'."Nume ".'</th>';
+echo '<th>'."Email".'</th>';
+echo '<th>'."Parola".'</th>';
+
+echo '</tr><tbody>';
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    echo '<tr>';
+      echo "<td>". $row["name"].'</td>'. "<td>". $row["email"].'</td>'. "<td>" . $row["password"] .'</td>';
+      echo '</tr>';
+  }
+} else {
+  echo "0 results";
+}
 ?>
 
 </body>
