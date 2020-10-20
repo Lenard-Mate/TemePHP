@@ -94,13 +94,45 @@ $result = $conn->query($sql);
 ?>
 
 
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
-<h2>Logeazate ca sati vad datele!</h2>
-  Name: <input type="text" name="name" value="<?php echo $name;?>">
-  E-mail: <input type="text" name="email" value="<?php echo $email;?>">
-  Password: <input type="password" name="password" value="<?php echo $password;?>">
-  <input type="submit" name="submit" value="Submit">  
+<form class="form1" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
+    <h2>Logeazate ca sati vad datele!</h2>
+      Name: <input type="text" name="name" value="<?php echo $name;?>">
+      E-mail: <input type="text" name="email" value="<?php echo $email;?>">
+      Password: <input type="password" name="password" value="<?php echo $password;?>">
+      <input type="submit" name="submit" value="Submit">  
+
+  
 </form>
+
+
+<form class="delete" action="" method="post">
+      id: <input type="number" name="name" value="<?php echo $numberId;?>">
+      <button type="submit" name="sub" value="">Delete</button>
+
+ <?php
+$val = 0;
+function mata($val){
+
+
+  return $val;
+}
+
+if (isset($_POST['name'])){
+
+  //echo mata($_POST['name']);
+
+  $sql = "DELETE FROM o8LxL7h9xu.form_table WHERE idnew_table=".$_POST['name'];
+  if ($conn->query($sql) === TRUE) {
+    //echo "Record deleted successfully";
+  } else {
+    //echo "Error deleting record: " . $conn->error;
+  }
+}
+
+?>
+</form>
+
+  
 
 <?php
 echo "<br><h2>Your Input:</h2>";
@@ -112,7 +144,6 @@ echo '<th>'."Parola".'</th>';
 
 echo '</tr><tbody>';
 if ($result->num_rows > 0) {
-  // output data of each row
   while($row = $result->fetch_assoc()) {
       echo '<tr>';
       echo "<td>". $row["idnew_table"].'</td>'."<td>". $row["name"].'</td>'. "<td>". $row["email"].'</td>'. "<td>" . $row["password"] .'</td>';
@@ -123,19 +154,5 @@ if ($result->num_rows > 0) {
 }
 ?>
 
-<div class="delete">
-  id: <input type="number" name="name" value="<?php echo $numberId;?>">
-  <input type="submit" name="Delete" value="Delete" onclick="delete()">  
-</div> 
-
-<?php
-
-function delete($numberId) {
-  echo "merge foarte bine";
-  echo $numberId;
-  $sql = "DELETE FROM o8LxL7h9xu.form_table WHERE idnew_table = 157;";
-}
-
-?>
 </body>
 </html>
