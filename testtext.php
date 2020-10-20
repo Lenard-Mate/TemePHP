@@ -25,7 +25,7 @@ if ($conn->connect_error) {
 // define variables and set to empty values
 $nameErr = $emailErr = $genderErr = $websiteErr = "";
 $name = $email = $gender = $comment = $password = "";
-$numberId=0;
+$numberId;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["name"])) {
@@ -78,6 +78,8 @@ function test_input($data) {
   return $data;
 }
 
+
+if ($password !=null){
 $sql = "INSERT INTO o8LxL7h9xu.form_table (name, email, password)
     VALUES ('$name', '$email', '$password')";
 if ($conn->query($sql) === TRUE) {
@@ -85,11 +87,10 @@ if ($conn->query($sql) === TRUE) {
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
+}
 
 
 
-$sql = "SELECT idnew_table,name, email, password FROM o8LxL7h9xu.form_table";
-$result = $conn->query($sql);
 
 ?>
 
@@ -135,6 +136,9 @@ if (isset($_POST['name'])){
   
 
 <?php
+
+$sql = "SELECT idnew_table,name, email, password FROM o8LxL7h9xu.form_table";
+$result = $conn->query($sql);
 echo "<br><h2>Your Input:</h2>";
 echo '<table><tr>';
 echo '<th>'."id ".'</th>';
