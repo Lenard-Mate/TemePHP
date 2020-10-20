@@ -1,9 +1,8 @@
 <!DOCTYPE HTML>  
 <html>
 <head>
-<style>
-.error {color: #FF0000;}
-</style>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>  
 
@@ -22,7 +21,6 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 //echo "Connected successfully";
-
 
 // define variables and set to empty values
 $nameErr = $emailErr = $genderErr = $websiteErr = "";
@@ -92,22 +90,19 @@ if ($conn->query($sql) === TRUE) {
 $sql = "SELECT name, email, password FROM o8LxL7h9xu.form_table";
 $result = $conn->query($sql);
 
-
 ?>
 
-<h2>Salvarea datelor</h2>
+
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
+<h2>Logeazate ca sati vad datele!</h2>
   Name: <input type="text" name="name" value="<?php echo $name;?>">
-  <br><br>
   E-mail: <input type="text" name="email" value="<?php echo $email;?>">
-  <br><br>
   Password: <input type="password" name="password" value="<?php echo $password;?>">
-  <br><br>
   <input type="submit" name="submit" value="Submit">  
 </form>
 
 <?php
-echo "<h2>Your Input:</h2>";
+echo "<br><h2>Your Input:</h2>";
 echo '<table><tr>';
 
 echo '<th>'."Nume ".'</th>';
