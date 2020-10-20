@@ -86,6 +86,21 @@ if ($conn->query($sql) === TRUE) {
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
+
+
+
+$sql = "SELECT name, email, password FROM o8LxL7h9xu.form_table";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "<br> Name: ". $row["name"]. " - Email: ". $row["email"]. " " . $row["password"] . "<br>";
+    }
+} else {
+    echo "0 results";
+}
+
 ?>
 
 <h2>Salvarea datelor</h2>
