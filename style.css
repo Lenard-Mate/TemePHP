@@ -28,3 +28,7 @@ table {
   h2{
     margin-left: 10%;
   }
+  .delete{
+    float:right;
+    margin-right: 20%;
+}

@@ -25,6 +25,7 @@ if ($conn->connect_error) {
 // define variables and set to empty values
 $nameErr = $emailErr = $genderErr = $websiteErr = "";
 $name = $email = $gender = $comment = $password = "";
+$numberId=0;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["name"])) {
@@ -87,7 +88,7 @@ if ($conn->query($sql) === TRUE) {
 
 
 
-$sql = "SELECT name, email, password FROM o8LxL7h9xu.form_table";
+$sql = "SELECT idnew_table,name, email, password FROM o8LxL7h9xu.form_table";
 $result = $conn->query($sql);
 
 ?>
@@ -104,7 +105,7 @@ $result = $conn->query($sql);
 <?php
 echo "<br><h2>Your Input:</h2>";
 echo '<table><tr>';
-
+echo '<th>'."id ".'</th>';
 echo '<th>'."Nume ".'</th>';
 echo '<th>'."Email".'</th>';
 echo '<th>'."Parola".'</th>';
@@ -113,8 +114,8 @@ echo '</tr><tbody>';
 if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
-    echo '<tr>';
-      echo "<td>". $row["name"].'</td>'. "<td>". $row["email"].'</td>'. "<td>" . $row["password"] .'</td>';
+      echo '<tr>';
+      echo "<td>". $row["idnew_table"].'</td>'."<td>". $row["name"].'</td>'. "<td>". $row["email"].'</td>'. "<td>" . $row["password"] .'</td>';
       echo '</tr>';
   }
 } else {
@@ -122,5 +123,19 @@ if ($result->num_rows > 0) {
 }
 ?>
 
+<div class="delete">
+  id: <input type="number" name="name" value="<?php echo $numberId;?>">
+  <input type="submit" name="Delete" value="Delete" onclick="delete()">  
+</div> 
+
+<?php
+
+function delete($numberId) {
+  echo "merge foarte bine";
+  echo $numberId;
+  $sql = "DELETE FROM o8LxL7h9xu.form_table WHERE idnew_table = 157;";
+}
+
+?>
 </body>
 </html>
