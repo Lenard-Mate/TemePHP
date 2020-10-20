@@ -81,7 +81,6 @@ function test_input($data) {
 
 $sql = "INSERT INTO o8LxL7h9xu.form_table (name, email, password)
     VALUES ('$name', '$email', '$password')";
-    echo $password
 if ($conn->query($sql) === TRUE) {
  // echo "New record created successfully";
 } else {
@@ -96,7 +95,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "<br><b> Name: ". $row["name"]. " - Email: ". $row["email"]. " " . $row["password"] . "<b><br>";
+        echo "<br> Name: ". $row["name"]. " - Email: ". $row["email"]. " " . $row["password"] . "<br>";
     }
 } else {
     echo "0 results";
