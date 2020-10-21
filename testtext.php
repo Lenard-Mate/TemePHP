@@ -26,7 +26,8 @@ if ($conn->connect_error) {
 $nameErr = $emailErr = $genderErr = $websiteErr = "";
 $name = $email = $gender = $comment = $password = "";
 $numberId;
-
+$editid=null ;
+$name2=null;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["name"])) {
     $nameErr = "Name is required";
@@ -89,9 +90,6 @@ if ($conn->query($sql) === TRUE) {
 }
 }
 
-
-
-
 ?>
 
 
@@ -101,8 +99,6 @@ if ($conn->query($sql) === TRUE) {
       E-mail: <input type="text" name="email" value="<?php echo $email;?>">
       Password: <input type="password" name="password" value="<?php echo $password;?>">
       <input type="submit" name="submit" value="Submit">  
-
-  
 </form>
 
 
@@ -134,6 +130,19 @@ if (isset($_POST['name'])){
 </form>
 
   
+<br>
+<div class="form2">
+<form  method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
+
+    <h2>Aici editezi numele</h2>
+    
+      id: <input type="text" name="id2" value="<?php echo $editid;?>">
+      Name: <input type="text" name="name2" value="<?php echo $name2;?>">
+    
+      <input type="submit" name="submit" value="Edit">  
+</form>
+</div>
+
 
 <?php
 
