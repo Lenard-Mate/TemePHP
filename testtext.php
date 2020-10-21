@@ -107,16 +107,10 @@ if ($conn->query($sql) === TRUE) {
       <button type="submit" name="sub" value="">Delete</button>
 
  <?php
-$val = 0;
-function mata($val){
 
-
-  return $val;
-}
 
 if (isset($_POST['name'])){
 
-  //echo mata($_POST['name']);
 
   $sql = "DELETE FROM o8LxL7h9xu.form_table WHERE idnew_table=".$_POST['name'];
   if ($conn->query($sql) === TRUE) {
@@ -139,10 +133,30 @@ if (isset($_POST['name'])){
       id: <input type="text" name="id2" value="<?php echo $editid;?>">
       Name: <input type="text" name="name2" value="<?php echo $name2;?>">
     
-      <input type="submit" name="submit" value="Edit">  
+      <input type="submit" name="sub2" value="Edit">  
+
+
+      <?php 
+
+
+
+if (isset($_POST['id2'])){
+  echo $_POST['id2'];
+  echo $_POST['name2'];
+  $varoable = $_POST['name2'];
+  $sql = "UPDATE o8LxL7h9xu.form_table SET name = '$varoable' WHERE idnew_table =".$_POST['id2'];
+
+  if ($conn->query($sql) === TRUE) {
+    echo "Record updated successfully";
+  } else {
+    echo "Error updating record: " . $conn->error;
+  }
+}
+
+
+?>
 </form>
 </div>
-
 
 <?php
 
