@@ -94,7 +94,7 @@ if ($conn->query($sql) === TRUE) {
 
 
 <form class="form1" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
-    <h2>Logeazate ca sati vad datele!</h2>
+    <h2>Log in  ca sa am datele!</h2>
       Name: <input type="text" name="name" value="<?php echo $name;?>">
       E-mail: <input type="text" name="email" value="<?php echo $email;?>">
       Password: <input type="password" name="password" value="<?php echo $password;?>">
