@@ -10,8 +10,8 @@
 
 //Conection to database
 $servername = "remotemysql.com";
-$username = "o8LxL7h9xu";
-$password = "8iqIEQbEUZ";
+$username = "8z1K25q0Yf";
+$password = "fNXUxBmeFR";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password);
@@ -81,7 +81,7 @@ function test_input($data) {
 
 
 if ($password !=null){
-$sql = "INSERT INTO o8LxL7h9xu.form_table (name, email, password)
+$sql = "INSERT INTO 8z1K25q0Yf.form_table (name, email, password)
     VALUES ('$name', '$email', '$password')";
 if ($conn->query($sql) === TRUE) {
  // echo "New record created successfully";
@@ -112,7 +112,7 @@ if ($conn->query($sql) === TRUE) {
 if (isset($_POST['name'])){
 
 
-  $sql = "DELETE FROM o8LxL7h9xu.form_table WHERE idnew_table=".$_POST['name'];
+  $sql = "DELETE FROM 8z1K25q0Yf.form_table WHERE idnew_table=".$_POST['name'];
   if ($conn->query($sql) === TRUE) {
     //echo "Record deleted successfully";
   } else {
@@ -144,7 +144,7 @@ if (isset($_POST['id2'])){
   echo $_POST['id2'];
   echo $_POST['name2'];
   $varoable = $_POST['name2'];
-  $sql = "UPDATE o8LxL7h9xu.form_table SET name = '$varoable' WHERE idnew_table =".$_POST['id2'];
+  $sql = "UPDATE 8z1K25q0Yf.form_table SET name = '$varoable' WHERE idnew_table =".$_POST['id2'];
 
   if ($conn->query($sql) === TRUE) {
     echo "Record updated successfully";
@@ -160,7 +160,7 @@ if (isset($_POST['id2'])){
 
 <?php
 
-$sql = "SELECT idnew_table,name, email, password FROM o8LxL7h9xu.form_table";
+$sql = "SELECT idnew_table,name, email, password FROM 8z1K25q0Yf.form_table";
 $result = $conn->query($sql);
 echo "<br><h2>Your Input:</h2>";
 echo '<table><tr>';
